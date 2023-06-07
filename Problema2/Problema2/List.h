@@ -660,5 +660,106 @@ public:
 
 	}
 
+	int getUltimulNr(int dim) {
+
+		Node* aux = head;
+
+		for (int i = 0; i < dim - 1; i++)
+			aux = aux->getNext();
+
+		return aux->getData();
+	}
+
+	int ctIntervalAfara(int dim) {
+
+		Node* aux = head;
+
+		int ct = 0;
+		int ultim = getUltimulNr(dim);
+		int primul = aux->getData();
+		for (int i = 0; i < dim; i++) {
+			if (aux->getData() < primul && aux->getData() > ultim)
+				ct++;
+
+			aux = aux->getNext();
+		}
+
+		return ct;
+	}
+
+	int ctPerechiPrime(int dim) {
+
+		Node* aux = head;
+
+		int ct = 0;
+
+		for (int i = 0; i < dim; i++) {
+			int n, m;
+			n = aux->getData();
+			Node* nou = head;
+			for (int j = 0; j < dim; j++) {
+				m = nou->getData();
+				if (divizorComun(n, m) == 1) ct++;
+				nou = nou->getNext();
+			}
+
+			aux = aux->getNext();
+		}
+
+		return ct / 2;
+	}
+
+	int ctEgalUiltim(int dim) {
+
+		Node* aux = head;
+
+		int ct = 0;
+
+		for (int i = 0; i < dim; i++) {
+			if (aux->getData() == getUltimulNr(dim))
+				ct++;
+
+			aux = aux->getNext();
+		}
+
+		return ct;
+
+	}
+
+	int ctNrPrime(int dim) {
+
+		Node* aux = head;
+
+		int ct = 0;
+
+		for (int i = 0; i < dim; i++) {
+			if (prim(aux->getData()))
+				ct++;
+
+			aux = aux->getNext();
+		}
+
+		return ct;
+
+
+	}
+
+	void afisarePatratPerf(int dim) {
+
+		Node* aux = head;
+
+		int ct = 0;
+
+		for (int i = 0; i < dim; i++) {
+			if (verifPatratPerfect(aux->getData()))
+				cout << aux->getData() << " ";
+
+
+			aux = aux->getNext();
+		}
+
+
+	}
+
 
 };
