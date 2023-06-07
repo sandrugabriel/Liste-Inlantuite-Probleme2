@@ -1,5 +1,6 @@
 #pragma once
 #include "Node.h"
+#include <math.h>
 
 struct List
 {
@@ -932,6 +933,22 @@ public:
 		}
 
 
+
+	}
+
+	void inserareRadacina(int dim) {
+
+		Node* aux = head;
+		for (int i = 0; i < dim; i++) {
+
+			if (verifPatratPerfect(aux->getData())) {
+				addPoz(sqrt(aux->getData()), i);
+				i++;
+			}
+
+			aux = aux->getNext();
+
+		}
 
 	}
 
