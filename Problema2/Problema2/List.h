@@ -822,4 +822,117 @@ public:
 
 	}
 
+	void inserareMini(int dim, int mini) {
+		
+		Node* aux = head;
+		for (int i = 0; i < dim; i++) {
+
+			if (aux->getData()==mini) {
+				setPoz(i-1,mini);
+			}
+
+			aux = aux->getNext();
+
+		}
+
+		
+
+
+	}
+
+	void stergereEgaleMini(int dim, int mini) {
+
+		Node* aux = head;
+		for (int i = 0; i < dim; i++) {
+
+			if (aux->getData()==mini) {
+				dim--;
+				stergerePoz(i);
+				i = 0;
+				aux = head;
+			}
+
+			aux = aux->getNext();
+
+		}
+
+
+
+	}
+
+	bool palindrom(int nr) {
+		int a = nr;
+		int t = 0;
+		while (nr != 0)
+		{
+			int c = nr % 10;
+			t = t * 10 + c;
+			nr = nr / 10;
+		}
+
+		if (a == t) return true;
+
+		return false;
+	}
+
+	void afisarePelindrom(int dim) {
+
+		Node* aux = head;
+		int ct = 0, ct1 = 0;
+		for (int i = 0; i <= dim / 2; i++) {
+			if (ct % 2 == 0) {
+				if (palindrom(aux->getData())) {
+
+					cout << aux->getData() << " ";
+					ct++;
+					aux = aux->getNext();
+				}
+			}
+			else {
+				ct1++;
+				for (int j = 0; j < ct1; j++) {
+					Node* nou1 = head;
+					int n = 0;
+					while (n < dim - ct1)
+					{
+						nou1 = nou1->getNext();
+						n++;
+					}
+					if (palindrom(nou1->getData())) {
+						cout << nou1->getData() << " ";
+						j = dim + 1;
+						ct++;
+						aux = aux->getNext();
+					}
+					ct1++;
+				}
+
+			}
+
+
+		}
+
+
+
+
+	}
+
+	void addDublu(int dim) {
+
+		Node* aux = head;
+		for (int i = 0; i < dim; i++) {
+
+			if (aux->getData() % 2 == 0) {
+				addPoz(aux->getData()*2,i);
+				aux = head;
+			}
+
+			aux = aux->getNext();
+
+		}
+
+
+
+	}
+
 };
