@@ -153,7 +153,7 @@ public:
 			return;
 		}
 
-		while (ct < poz - 1)
+		while (ct < poz-1)
 		{
 			aux = aux->getNext();
 			ct++;
@@ -761,5 +761,65 @@ public:
 
 	}
 
+	void afisareSumele(int dim) {
+
+		int ct = dim;
+		while (ct >= 1)
+		{
+
+			Node* aux = head;
+			int s = 0;
+			for (int i = 0; i < ct; i++) {
+
+				s += aux->getData();
+				aux = aux->getNext();
+			}
+			cout << s << endl;
+
+			ct--;
+		}
+
+
+
+
+	}
+	
+	void stergerePare(int dim) {
+
+		Node* aux = head;
+		for (int i = 0; i < dim; i++) {
+
+			if (aux->getData() % 2 == 0) {
+				dim--;
+				i--;
+				stergerePoz(i);
+				aux = head;
+			}
+
+				aux = aux->getNext();
+			
+		}
+
+	}
+
+	void stergereaPrime(int dim) {
+
+		Node* aux = head;
+		for (int i = 0; i < dim; i++) {
+
+			if (prim(aux->getData())) {
+				dim--;
+				stergerePoz(i);
+				aux = head;
+			}
+
+			aux = aux->getNext();
+
+		}
+
+
+
+
+	}
 
 };
