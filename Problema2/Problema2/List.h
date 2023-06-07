@@ -122,4 +122,436 @@ public:
 
 
 	}
+
+	void stergereaPrimElement() {
+
+		head = head->getNext();
+
+	}
+
+	void stergereUltim() {
+
+		Node* aux = head;
+
+		while (aux->getNext()->getNext() != NULL)
+		{
+			aux = aux->getNext();
+		}
+
+		aux->setNext(NULL);
+
+	}
+
+	void stergerePoz(int poz) {
+
+		Node* aux = head;
+
+		int ct = 0;
+
+		if (poz == 0) {
+			stergereaPrimElement();
+			return;
+		}
+
+		while (ct < poz - 1)
+		{
+			aux = aux->getNext();
+			ct++;
+		}
+
+		if (aux->getNext() == NULL) {
+			stergereUltim();
+			return;
+		}
+
+		aux->setNext(aux->getNext()->getNext());
+
+	}
+
+	int size() {
+
+		Node* aux = head;
+		int ct = 0;
+		while (aux->getNext() != NULL)
+		{
+			aux = aux->getNext();
+			ct++;
+		}
+
+		return ct + 1;
+	}
+
+	void setPoz(int poz, int nr) {
+		Node* aux = head;
+		int ct = 0;
+		while (ct < poz)
+		{
+			aux = aux->getNext();
+			ct++;
+		}
+
+		aux->setData(nr);
+
+
+	}
+
+	int getPoz(int poz) {
+
+		Node* aux = head;
+
+		int ct = 0;
+
+		while (ct < poz)
+		{
+			aux = aux->getNext();
+			ct++;
+		}
+
+		return aux->getData();
+	}
+
+	void crescator(int dim) {
+
+		Node* head1 = head;
+
+		int semn = 1;
+
+		do {
+			semn = 1;
+			head1 = head;
+			for (int i = 0; i < dim - 1; i++) {
+
+				if (head1->getData() > head1->getNext()->getData()) {
+
+					int aux = getPoz(i);
+					setPoz(i, getPoz(i + 1));
+					setPoz(i + 1, aux);
+					semn = 0;
+				}
+
+				head1 = head1->getNext();
+			}
+
+		} while (semn == 0);
+
+
+
+	}
+
+	int maxi(int dim) {
+		Node* aux = head;
+		int maxi = -1;
+
+		for (int i = 0; i < dim; i++) {
+
+			if (aux->getData() > maxi)
+				maxi = aux->getData();
+
+			aux = aux->getNext();
+		}
+
+		return maxi;
+	}
+
+	int mini(int dim) {
+		Node* aux = head;
+		int mini = 99999;
+
+		for (int i = 0; i < dim; i++) {
+
+			if (aux->getData() < mini)
+				mini = aux->getData();
+
+			aux = aux->getNext();
+		}
+
+		return mini;
+	}
+
+	bool prim(int nr) {
+
+		if (nr == 0 || nr == 1)
+			return false;
+
+		for (int i = 2; i <= nr / 2; i++)
+			if (nr % i == 0)
+				return false;
+
+		return true;
+	}
+
+	int pozmaxi(int dim) {
+		Node* aux = head;
+		int maxi = -1;
+		int poz = 0;
+
+		for (int i = 0; i < dim; i++) {
+
+			if (aux->getData() > maxi) {
+				maxi = aux->getData();
+				poz = i;
+			}
+
+			aux = aux->getNext();
+		}
+
+		return poz;
+	}
+
+	int pozmini(int dim) {
+		Node* aux = head;
+		int mini = 99999;
+		int poz = 0;
+
+		for (int i = 0; i < dim; i++) {
+
+			if (aux->getData() < mini) {
+				mini = aux->getData();
+				poz = i;
+			}
+
+			aux = aux->getNext();
+		}
+
+		return poz;
+	}
+
+	int sumaCif(int nr) {
+
+		int s = 0;
+
+		while (nr != 0)
+		{
+			int c = nr % 10;
+			s += c;
+			nr /= 10;
+		}
+
+		return s;
+	}
+
+	int divizorComun(int n, int m) {
+
+		while (m != 0)
+		{
+			int r = n % m;
+			n = m;
+			m = r;
+		}
+
+		return n;
+	}
+
+	int ctNr(int nr) {
+		int ct = 0;
+		while (nr != 0)
+		{
+			ct++;
+			nr /= 10;
+		}
+		return ct;
+	}
+
+	bool verifPatratPerfect(int nr) {
+
+		int ctnr = ctNr(nr);
+		if (ctnr > 2) {
+			nr = nr / pow(10, ctnr - 2);
+		}
+
+		if (sqrt(nr) == (int)sqrt(nr))
+			return true;
+
+		return false;
+	}
+
+	void nextI(int i, Node* aux) {
+
+		int ct = 0;
+
+		while (ct < i)
+		{
+			aux = aux->getNext();
+			ct++;
+		}
+
+	}
+
+	void afisareCrescDesc(int dim) {
+
+		Node* aux = head;
+		aux = aux->getNext();
+		for (int i = 2; i <= dim; i += 2) {
+
+			cout << aux->getData()<<" ";
+			aux=aux->getNext()->getNext();
+
+		}
+
+		aux = head;
+		cout << endl;
+
+		for (int i = dim; i >= 1; i -= 2) {
+			int ct = 0;
+
+			while (ct < i-1)
+			{
+				aux = aux->getNext();
+				ct++;
+			}
+
+			cout << aux->getData()<<" ";
+			aux = head;
+		}
+
+	}
+
+	void afisarePrimUltim(int dim) {
+
+		Node* aux = head;
+		Node* aux1 = head;	
+		for (int i = 0; i < dim; i++) {
+			int ct = 0;
+
+			while (ct < i)
+			{
+				aux = aux->getNext();
+				ct++;
+			}
+			
+			if (i % 2 == 0) {
+				cout << aux->getData() << " ";
+				aux = head;
+			}
+			else
+			{
+				ct = 0;
+				while (ct < dim-i)
+				{
+					aux1 = aux1->getNext();
+					ct++;
+				}
+				cout << aux1->getData() << " ";
+				aux1 = head;
+			}
+		
+
+			aux = head;
+			aux1 = head;
+		}
+
+	}
+
+	void afisareInterval(int dim, int pozMaxi, int pozMini) {
+
+		Node* aux = head;
+
+		for (int i = 0; i < dim; i++) {
+
+			if (pozMaxi > pozMini) {
+				int aux = pozMaxi;
+				pozMaxi = pozMini;
+				pozMini = aux;
+			}
+			if (i >= pozMaxi && i <= pozMini)
+				cout << aux->getData() << " ";
+			aux = aux->getNext();
+		}
+
+	}
+
+	void afisareDreapta(int dim) {
+
+
+		Node* aux = head;
+		for (int i = dim; i >= 1; i --) {
+			int ct = 0;
+
+			while (ct < i - 1)
+			{
+				aux = aux->getNext();
+				ct++;
+			}
+
+			cout << aux->getData() << " ";
+			aux = head;
+		}
+
+
+	}
+
+	int sumPare(int dim) {
+
+		int s = 0;
+
+		Node* aux = head;
+
+		for (int i = 0; i < dim; i ++) {
+			
+			if(aux->getData()%2==0)
+			s += aux->getData();
+			aux = aux->getNext();
+
+		}
+
+
+		return s;
+	}
+
+	int sumParePoz(int dim) {
+
+		int s = 0;
+
+		Node* aux = head;
+
+		for (int i = 1; i <= dim; i++) {
+
+			if (i % 2 == 0)
+				s += aux->getData();
+			aux = aux->getNext();
+
+		}
+
+
+		return s;
+	}
+
+	int ctdiv10(int dim) {
+
+		int ct = 0;
+
+		Node* aux = head;
+
+		for (int i = 1; i <= dim; i++) {
+
+			if (aux->getData() % 10 == 0)
+				ct++;
+			aux = aux->getNext();
+
+		}
+
+
+		return ct;
+	}
+
+	int sumdiv3(int dim) {
+
+		int s = 0;
+
+		Node* aux = head;
+
+		for (int i = 1; i <= dim; i++) {
+
+			if (aux->getData() % 3 == 0 && i % 2 == 1)
+				s += aux->getData();
+			aux = aux->getNext();
+
+		}
+
+
+		return s;
+	}
+
+
+
 };
