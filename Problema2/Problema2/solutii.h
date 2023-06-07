@@ -500,56 +500,77 @@ void solutia26() {
 	list.afisare();
 }
 
-/*
-#1365
-#162
-#289
-#506
+/*#1550
+Se da un vector cu n elemente. Sa se afișeze pe ecran elementele din vector care divid factorialul numărului de elemente n.
+Ex:
+5
+16 3 71 30 25
+se afiseaza 3 30
 */
+void solutia27() {
 
+	int dim = 5;
+	int v[100] = { 16, 3, 71, 30, 25 };
+	for (int i = 0; i < dim; i++)
+		list.addEnd(v[i]);
 
+	list.afisareFactorial(dim);
+}
 
+/*#162
+Se dă un vector cu n elemente numere naturale. Determinați toate permutările circulare spre stânga ale vectorului.
+Ex:
+5
+7 2 8 4 5
+se afiseaza
+7 2 8 4 5
+2 8 4 5 7
+8 4 5 7 2
+4 5 7 2 8
+5 7 2 8 4*/
+void solutia28() {
 
+	int dim = 5;
+	int v[100] = { 7, 2,8, 4, 5 };
+	for (int i = 0; i < dim; i++)
+		list.addEnd(v[i]);
 
+	list.afisarePermutari(dim);
+}
 
+/*
+#289
+Se dă un şir cu n elemente, numere naturale. Să se verifice dacă în şir există elemente impare.
+Ex:
+5
+2 8 6 10 8
+se afiseaza 0
+*/
+void solutia29() {
 
+	int dim = 5;
+	int v[100] = { 2, 8, 6 ,10, 8 };
+	for (int i = 0; i < dim; i++)
+		list.addEnd(v[i]);
 
+	cout << list.verificareImpare(dim);
+}
 
+/*
+#506
+Se dă un şir cu n elemente, numere naturale. Să se verifice dacă în şir există elemente prime.
+Ex:
+5
+21 8 6 10 8
+se afiseaza 0
+*/
+void solutia30(){
 
+	int dim = 5;
+	int v[100] = { 21, 5 ,6 ,10, 8 };
+	for (int i = 0; i < dim; i++)
+		list.addEnd(v[i]);
 
+	cout <<list.verificarePrime(dim);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
