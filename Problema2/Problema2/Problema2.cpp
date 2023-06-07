@@ -1,5 +1,5 @@
 #include "solutii.h"
 int main()
 {
-	solutia10();
+	solutia15();
 }
