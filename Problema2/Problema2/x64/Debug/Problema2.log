@@ -1,3 +1,4 @@
 ﻿  Problema2.cpp
-C:\Mycode\C++\Structuri de date\Probleme_PbInfo\Probleme2\Problema2\Problema2\List.h(359,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Mycode\C++\Structuri de date\Probleme_PbInfo\Probleme2\Problema2\Problema2\List.h(360,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Mycode\C++\Structuri de date\Probleme_PbInfo\Probleme2\Problema2\Problema2\List.h(945,16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   Problema2.vcxproj -> C:\Mycode\C++\Structuri de date\Probleme_PbInfo\Probleme2\Problema2\x64\Debug\Problema2.exe

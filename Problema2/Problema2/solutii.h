@@ -480,7 +480,32 @@ void solutia25() {
 
 }
 
+/*
+#160
+Să se insereze în șir înaintea fiecărui element pătrat perfect rădăcina sa pătrată.
+Ex:
+5
+7 3 4 1 5
+se afiseaza
+7 3 2 4 1 1 5
+*/
+void solutia26() {
 
+	int dim = 5, poz = 2, nr = 10;
+	int v[100] = { 7 ,3 ,4, 1 ,5 };
+	for (int i = 0; i < dim; i++)
+		list.addEnd(v[i]);
+
+	list.inserareRadacina(dim);
+	list.afisare();
+}
+
+/*
+#1365
+#162
+#289
+#506
+*/
 
 
 
