@@ -385,8 +385,100 @@ void solutia20() {
 	list.afisare();
 }
 
+/*#4386
+Se dă un vector cu n elemente numere naturale. Să se transforme vectorul, duplicând fiecare apariție a valorii minime.
+Ex:
+7
+7 9 4 2 1 6 1
+se afiseaza
+7 9 4 2 1 1 6 1 1
+*/
+void solutia21() {
+
+	int dim = 7;
+	int v[100] = { 7, 9 ,4, 2 ,1, 6, 1 };
+	for (int i = 0; i < dim; i++)
+		list.addEnd(v[i]);
+	list.inserareMini(dim,list.mini(dim));
+	list.afisare();
+}
+
+/*
+#4385
+Se dă un vector cu n elemente numere naturale. Să se șteargă din vector toate elementele 
+egale cu cea mai mică valoare din vector.
+Ex:
+7
+7 1 4 2 1 6 1
+se afiseaza
+7 4 2 6*/
+void solutia22() {
+
+	int dim = 7;
+	int v[100] = { 7 ,1, 4, 2 ,1, 6, 1 };
+	for (int i = 0; i < dim; i++)
+		list.addEnd(v[i]);
+
+	list.stergereEgaleMini(dim, list.mini(dim));
+	list.afisare();
+}
+
+/*#2375
+  Să se afișeze numerele palindrom din fișier în ordinea primul, ultimul, al doilea, penultimul etc.
+Ex:
+8
+11 21 303 4114 51 66 75 808
+se afiseaza 11 808 303 66 4114   */
+void solutia23() {
+
+	int dim = 8;
+	int v[100] = { 11, 21, 303, 4114 ,51, 66, 75, 808 };
+	for (int i = 0; i < dim; i++)
+		list.addEnd(v[i]);
+
+	list.afisarePelindrom(dim);
+}
+
+/*#158
+ Se dă un șir cu n elemente întregi, valoare întreagă X și un număr p.
+Să se insereze pe poziția p în șir valoarea X.
+Ex:
+5 10 2
+7 3 9 1 6
+se afiseaza
+7 10 3 9 1 6*/
+void solutia24() {
+
+	int dim = 5,poz=2,nr=10;
+	int v[100] = { 7, 3, 9 ,1, 6 };
+	for (int i = 0; i < dim; i++)
+		list.addEnd(v[i]);
+
+	list.addPoz(nr, poz - 1);
+	list.afisare();
+}
+
+/*
+#159
+Să se insereze în șir după fiecare element par dublul său.
+Ex:
+5
+7 3 4 1 6
+se afiseaza
+7 3 4 8 1 6 12
+*/
+void solutia25() {
+
+	int dim = 5, poz = 2, nr = 10;
+	int v[100] = { 7, 3 ,4, 1, 6 };
+	for (int i = 0; i < dim; i++)
+		list.addEnd(v[i]);
+
+	list.addDublu(dim);
+	list.afisare();
 
 
+}
 
 
 
