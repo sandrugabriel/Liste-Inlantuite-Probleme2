@@ -552,6 +552,113 @@ public:
 		return s;
 	}
 
+	int ctPerechiCifZeci(int dim) {
+
+		Node* aux = head;
+		Node* nou = head;
+		int ct = 0;
+
+		for (int i = 0; i < dim; i++) {
+			nou = head;
+			nextI(i + 1, nou);
+
+			for (int j = 0; j < dim; j++) {
+
+				if ((nou->getData() != aux->getData()) && ((nou->getData() / 10) % 10 == (aux->getData() / 10) % 10)) {
+					ct++;
+				}
+
+				if (nou->getNext() == NULL) {
+					j = dim;
+					break;
+				}
+				nou = nou->getNext();
+			}
+
+			aux = aux->getNext();
+		}
+
+		return ct / 2;
+
+
+	}
+
+	int ctPerechiSumEgal(int dim) {
+
+		Node* aux = head;
+		Node* nou = head;
+		int ct = 0;
+
+		for (int i = 0; i < dim; i++) {
+			nou = head;
+			nextI(i + 1, nou);
+
+			for (int j = 0; j < dim; j++) {
+
+				if ((nou->getData() != aux->getData()) && (sumaCif(nou->getData()) == sumaCif(aux->getData()))) {
+					ct++;
+				}
+
+				if (nou->getNext() == NULL) {
+					j = dim;
+					break;
+				}
+				nou = nou->getNext();
+			}
+
+			aux = aux->getNext();
+		}
+
+		return ct / 2;
+
+
+	}
+
+	void addRestulImp(int dim, List list) {
+
+		for (int i = 0; i < dim; i++) {
+			int nr = list.head->getData();
+			int sumacif = sumaCif(list.head->getData());
+			addEnd(nr % sumacif);
+
+			list.head = list.head->getNext();
+		}
+
+	}
+
+	void afisareInversaImpar(int dim) {
+
+		Node* aux = head;
+		for (int i = dim; i >= 1; i--) {
+			int ct = 0;
+
+			while (ct < i - 1)
+			{
+				aux = aux->getNext();
+				ct++;
+			}
+			if(aux->getData()%2==1)
+			cout << aux->getData() << " ";
+			aux = head;
+		}
+
+
+
+	}
+
+	void addPrime(int dim, List list) {
+
+
+		for (int i = 0; i < dim; i++) {
+
+			if (prim(list.head->getData())) {
+				addStart(list.head->getData());
+			}
+
+			list.head = list.head->getNext();
+		}
+
+	}
 
 
 };
